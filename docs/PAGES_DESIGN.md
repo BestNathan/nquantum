@@ -55,4 +55,11 @@ V1：引入真实 observation 数据、来源细节页、跨设备同协议筛�
 
 ## 部署
 
-静态文件全部位于 `docs/`，GitHub 仓库 **Settings → Pages → Deploy from a branch → main → /docs**。初始发布需仓库管理员在 GitHub 界面启用，后续推送 main 可自动更新页面（由 GitHub Pages 执行）。无需 Actions workflow。
+静态文件全部位于 `docs/`，由 `.github/workflows/pages.yml` 对 `docs/` 做语法与文件存在性校验，并上传为 Pages artifact。管理员需要**首次在 GitHub 仓库 Settings → Pages → Build and deployment → Source 中选择 GitHub Actions**。此后更新 `main` 分支上的 `docs/` 会触发部署，也可到 Actions → Publish nquantum Pages 手动运行。
+
+如果部署失败：
+
+1. `Configure Pages` 返回 `Get Pages site failed / Not Found`：检查 Pages Source 是否已设为 `GitHub Actions`；默认 `GITHUB_TOKEN` 不能自行首次开通 Pages。
+2. `Validate and package` 失败：检查 `docs/index.html`、`docs/app.js`、`docs/styles.css`、`docs/data/research.json` 是否存在并通过语法校验。
+3. `Deploy` 返回权限错误：检查工作流 `pages: write`、`id-token: write`、仓库 Actions 权限和 `github-pages` 环境保护设置。
+4. workflow 完成但首页仍打不开：检查部署日志中的 `page_url`、公开页面地址及延迟；不要把构建通过视为站点已经可访问。

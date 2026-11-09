@@ -7,7 +7,8 @@
 - [x] README、六大研究方向与统一问题清单。
 - [x] 指标/证据方法论、数据模型和来源规范。
 - [x] GitHub Pages 信息架构与静态交互原型。
-- [ ] 在 Settings → Pages 启用 main /docs 并验证公开 URL。
+- [x] 新增 Pages GitHub Actions 发布工作流和静态校验。
+- [ ] 在 Settings → Pages 将 Source 设置为 GitHub Actions，并验证公开 URL。
 - [ ] 用至少 3 篇原始论文为研究问题建立第一轮证据记录。
 
 **验收**：页面无虚构实测数值；所有指标展开均包含定义、含义与限制；移动端可阅读；导航和来源可点击。

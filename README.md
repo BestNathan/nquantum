@@ -24,7 +24,7 @@ nquantum 持续研究量子计算的基础原理、物理硬件、量子纠错�
 - [Pages 产品与信息架构](docs/PAGES_DESIGN.md)
 - [分阶段路线图](docs/ROADMAP.md)
 - [可信来源与引用规则](docs/SOURCES.md)
-- [研究工作台 Pages](https://bestnathan.github.io/nquantum/)（需要在仓库 Settings → Pages 中选择 **Deploy from a branch / main /docs** 后才会发布）
+- [研究工作台 Pages](https://bestnathan.github.io/nquantum/)（需先在仓库 Settings → Pages → Build and deployment 将 Source 设置为 **GitHub Actions**；发布与验证由 [Pages workflow](.github/workflows/pages.yml) 执行）
 
 ## 原则
 
