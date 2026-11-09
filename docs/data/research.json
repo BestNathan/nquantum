@@ -1,0 +1,447 @@
+{
+  "version": "0.1.0",
+  "updated_at": "2026-11-09",
+  "disclaimer": "当前站点为研究导航与指标定义原型。尚未录入经过核实的设备实测值，不构成实时性能排名或投资建议。",
+  "verified_observations": 0,
+  "tracks": [
+    {
+      "id": "foundations",
+      "no": "01",
+      "name": "基础理论",
+      "en": "Foundations",
+      "description": "从态空间、量子门与测量到复杂性边界，建立可复现实验的共同语言。",
+      "questions": [
+        "何时具有理论量子加速？",
+        "噪声如何限制有效电路深度？"
+      ],
+      "url": "https://github.com/BestNathan/nquantum/blob/main/research/01-foundations.md"
+    },
+    {
+      "id": "hardware",
+      "no": "02",
+      "name": "硬件技术路线",
+      "en": "Hardware",
+      "description": "分析超导、离子阱、中性原子、光量子与半导体自旋的扩展性。",
+      "questions": [
+        "比特数增长是否带来有效性能提升？",
+        "器件质量与连通性如何共同约束规模化？"
+      ],
+      "url": "https://github.com/BestNathan/nquantum/blob/main/research/02-hardware.md"
+    },
+    {
+      "id": "qec",
+      "no": "03",
+      "name": "量子纠错与容错",
+      "en": "Error Correction",
+      "description": "研究物理错误到逻辑错误的抑制，以及容错计算的实际资源成本。",
+      "questions": [
+        "逻辑错误率是否随码距改善？",
+        "实时解码与逻辑操作如何扩展？"
+      ],
+      "url": "https://github.com/BestNathan/nquantum/blob/main/research/03-error-correction.md"
+    },
+    {
+      "id": "algorithms",
+      "no": "04",
+      "name": "算法与应用",
+      "en": "Algorithms",
+      "description": "从理论加速走向完整工作负载与强经典基线的公平比较。",
+      "questions": [
+        "量子优势在哪些任务成立？",
+        "端到端时间、精度和费用能否有竞争力？"
+      ],
+      "url": "https://github.com/BestNathan/nquantum/blob/main/research/04-algorithms.md"
+    },
+    {
+      "id": "systems",
+      "no": "05",
+      "name": "系统软件栈",
+      "en": "Systems & Runtime",
+      "description": "覆盖编译器、IR、QPU 调度、实时反馈与量子-经典异构计算。",
+      "questions": [
+        "如何复现实验执行与设备状态？",
+        "混合计算的系统瓶颈在哪里？"
+      ],
+      "url": "https://github.com/BestNathan/nquantum/blob/main/research/05-software-systems.md"
+    },
+    {
+      "id": "industry",
+      "no": "06",
+      "name": "产业与商业化",
+      "en": "Industry",
+      "description": "分开观察科学证据、产品可用性、市场采用与商业兑现。",
+      "questions": [
+        "产品收入和科研进展如何分开评价？",
+        "核心设备和供应链存在哪些瓶颈？"
+      ],
+      "url": "https://github.com/BestNathan/nquantum/blob/main/research/06-industry.md"
+    }
+  ],
+  "hardware": [
+    {
+      "id": "sc",
+      "name": "超导",
+      "en": "Superconducting",
+      "category": "固态电路",
+      "intro": "以低温超导电路实现量子比特，通常采用微波控制和片上耦合。",
+      "advantages": [
+        "芯片制造和集成研究积累",
+        "相对快速的门操作"
+      ],
+      "challenges": [
+        "低温布线与系统集成",
+        "串扰、耦合和错误累积"
+      ],
+      "question": "规模扩张能否同步维持门质量与有效线路深度？",
+      "source": "https://www.ibm.com/quantum/technology"
+    },
+    {
+      "id": "ion",
+      "name": "离子阱",
+      "en": "Trapped Ions",
+      "category": "原子与离子",
+      "intro": "用电磁阱捕获离子，借助光学/微波操控并实施离子输运或重排。",
+      "advantages": [
+        "高质量操控的研究基础",
+        "灵活的有效耦合方式"
+      ],
+      "challenges": [
+        "门速度与光学控制复杂度",
+        "输运、并行操作和系统扩展"
+      ],
+      "question": "高保真操作如何在更大的计算系统中保持吞吐？",
+      "source": "https://docs.quantinuum.com/systems/"
+    },
+    {
+      "id": "atom",
+      "name": "中性原子",
+      "en": "Neutral Atoms",
+      "category": "原子与离子",
+      "intro": "通过光镊阵列排列中性原子，利用 Rydberg 相互作用构造量子操作。",
+      "advantages": [
+        "阵列规模与重排潜力",
+        "可编程几何结构"
+      ],
+      "challenges": [
+        "原子损失与纠错开销",
+        "门和读出质量、并行控制"
+      ],
+      "question": "大阵列能否转化成可执行的高质量逻辑操作？",
+      "source": "https://arxiv.org/list/quant-ph/recent"
+    },
+    {
+      "id": "photonic",
+      "name": "光量子",
+      "en": "Photonic",
+      "category": "光学系统",
+      "intro": "以光子和光学网络承载量子信息，探索测量驱动及模块化方案。",
+      "advantages": [
+        "光子传输与网络化潜力",
+        "不同集成光学实现"
+      ],
+      "challenges": [
+        "光子损耗与资源态制备",
+        "器件效率和纠错资源"
+      ],
+      "question": "光损耗和资源态成本能否满足容错门模型要求？",
+      "source": "https://arxiv.org/list/quant-ph/recent"
+    },
+    {
+      "id": "spin",
+      "name": "半导体自旋",
+      "en": "Semiconductor Spin",
+      "category": "固态电路",
+      "intro": "以量子点中的自旋自由度实现量子比特，探索半导体制造集成。",
+      "advantages": [
+        "与半导体制造潜在兼容性",
+        "器件微型化的可能性"
+      ],
+      "challenges": [
+        "器件一致性与电荷噪声",
+        "互连、寻址和高质量读出"
+      ],
+      "question": "器件尺度缩小能否保持可控性与高质量门操作？",
+      "source": "https://arxiv.org/list/quant-ph/recent"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "physical-qubits",
+      "name": "物理量子比特数",
+      "en": "Physical Qubits",
+      "group": "规模与连接",
+      "symbol": "N_phys",
+      "formula": "N_phys = 指定芯片 / 系统版本中被明确计数的物理量子比特数",
+      "meaning": "描述器件规模，不等于可用的逻辑量子比特或可执行算力。",
+      "caveat": "必须区分芯片总量、可寻址、有效子集与参加 benchmark 的比特。",
+      "collection": "器件版本、计数范围、公布日期、设备文档及相应来源。"
+    },
+    {
+      "id": "connectivity",
+      "name": "耦合连通性",
+      "en": "Connectivity",
+      "group": "规模与连接",
+      "symbol": "G = (V, E)",
+      "formula": "G = (V, E)，V 为可操作量子比特，E 为原生双比特交互边",
+      "meaning": "影响算法映射、SWAP 插入及编译后线路深度。",
+      "caveat": "静态拓扑、动态重排和有效全连接可能在时间、保真度及并行性上不同。",
+      "collection": "设备原生门、连接图、门时长、动态重排代价及版本。"
+    },
+    {
+      "id": "circuit-depth",
+      "name": "编译后线路深度",
+      "en": "Compiled Circuit Depth",
+      "group": "规模与连接",
+      "symbol": "D",
+      "formula": "D = 目标原生门集和调度约束下的顺序门层数量",
+      "meaning": "衡量给定算法映射到设备后需要的串行操作层。",
+      "caveat": "不同门集、并行性、路由和动态线路下的 D 不能直接横比。",
+      "collection": "原始线路、编译器版本、优化级别、原生门集、映射和计时约束。"
+    },
+    {
+      "id": "gate-error",
+      "name": "门不保真度",
+      "en": "Gate Infidelity",
+      "group": "器件质量",
+      "symbol": "1 − F",
+      "formula": "p_g = 1 − F_g（前提：F_g 是定义一致的门保真度）",
+      "meaning": "对特定量子门性能的误差化表示，通常越小越好。",
+      "caveat": "RB、XEB、process fidelity 等定义不一定等价；注明平均值、子集及置信区间。",
+      "collection": "测量协议、门类型、校准时间、qubit 子集、统计区间、是否后选择。"
+    },
+    {
+      "id": "coherence",
+      "name": "相干时间",
+      "en": "T₁ / T₂",
+      "group": "器件质量",
+      "symbol": "T₁ · T₂",
+      "formula": "T₁：能量弛豫特征时间；T₂：相位相干衰减特征时间",
+      "meaning": "描述噪声的一部分物理时间尺度，是器件质量的一个维度。",
+      "caveat": "不能仅凭相干时间推算通用算法成功率；脉冲、门时长及噪声类型同样关键。",
+      "collection": "测量协议、器件温度、样本分布、测试日期与不确定性。"
+    },
+    {
+      "id": "readout-error",
+      "name": "读出误差率",
+      "en": "Readout Error",
+      "group": "器件质量",
+      "symbol": "P(readout ≠ state)",
+      "formula": "p_ro = N(读出与指定参考态不符) / N(有效读出)，仅用于相符的统计定义",
+      "meaning": "反映测量阶段把状态识别为另一个结果的概率。",
+      "caveat": "制备误差、状态依赖、串扰及 SPAM 校正方式会改变统计口径。",
+      "collection": "初态制备、读出矩阵、shots、协议、校正方法和设备时点。"
+    },
+    {
+      "id": "logical-error",
+      "name": "逻辑错误率",
+      "en": "Logical Error Rate",
+      "group": "纠错与逻辑",
+      "symbol": "p_L",
+      "formula": "p_L = 逻辑错误事件数 / 已定义的逻辑操作或周期数（示意定义）",
+      "meaning": "衡量编码与纠错后逻辑信息仍出错的程度，是容错研究关键量。",
+      "caveat": "每周期、每门和每实验的定义不同；需包含码距、解码器、轮数及置信区间。",
+      "collection": "编码方案、码距、错误事件定义、后选择、shots、解码器及论文表格。"
+    },
+    {
+      "id": "code-distance",
+      "name": "纠错码距",
+      "en": "Code Distance",
+      "group": "纠错与逻辑",
+      "symbol": "d",
+      "formula": "d = 码空间中最小非平凡逻辑算子的权重（以所用码定义为准）",
+      "meaning": "表示量子纠错码能保护信息的一项结构参数。",
+      "caveat": "码距较大不自动证明逻辑错误率较低；实际噪声、周期和解码同样重要。",
+      "collection": "纠错码种类、布局、综合征周期、使用的逻辑操作及代码定义。"
+    },
+    {
+      "id": "overhead",
+      "name": "物理/逻辑资源开销",
+      "en": "Physical-to-Logical Overhead",
+      "group": "纠错与逻辑",
+      "symbol": "N_phys / N_log",
+      "formula": "O = N_phys / N_log（必须限定任务与资源边界）",
+      "meaning": "反映一定容错目标下，一个逻辑量子比特或逻辑任务所需物理资源。",
+      "caveat": "不同架构、目标错误预算和运行方式无法靠单个比率排序。",
+      "collection": "目标计算、资源分配、ancilla、魔态工厂、编码方案和误差预算。"
+    },
+    {
+      "id": "job-time",
+      "name": "任务端到端耗时",
+      "en": "End-to-End Latency",
+      "group": "运行与经济性",
+      "symbol": "T_total",
+      "formula": "T_total = T_compile + T_queue + T_execute + T_postprocess（记录可重叠阶段）",
+      "meaning": "衡量用户完成一个实验任务的实际时间，而不只是芯片门操作速度。",
+      "caveat": "不同精度、shots、批处理、经典基线和排队条件不可直接比较。",
+      "collection": "任务输入、各阶段开始/结束时间、后端及访问模式。"
+    },
+    {
+      "id": "cost",
+      "name": "单任务实际成本",
+      "en": "Workload Cost",
+      "group": "运行与经济性",
+      "symbol": "C_total",
+      "formula": "C_total = QPU 计费 + 经典计算 + 数据处理 + 必要运维（按任务边界定义）",
+      "meaning": "用于评估真实应用的经济可行性。",
+      "caveat": "公开标价、补贴访问、内部估算和实际账单是不同证据。",
+      "collection": "服务定价/账单、使用量、精度、任务规模、成本分摊方法。"
+    },
+    {
+      "id": "advantage",
+      "name": "相对经典基线的优势",
+      "en": "Classical Baseline Comparison",
+      "group": "运行与经济性",
+      "symbol": "R",
+      "formula": "R = 同一任务与目标精度下的经典基线成本 / 量子方案端到端成本",
+      "meaning": "只有在任务、质量和资源预算对等时，才可讨论实用优势。",
+      "caveat": "理论复杂性优势、benchmark 优势和经济优势不是同一概念。",
+      "collection": "问题实例、精度/成功率、最佳经典基线、量子全流程与统计区间。"
+    }
+  ],
+  "sources": [
+    {
+      "name": "Quantum Physics · Recent",
+      "organization": "arXiv",
+      "kind": "论文",
+      "level": "E1*",
+      "url": "https://arxiv.org/list/quant-ph/recent",
+      "note": "预印本检索入口；论文需逐篇核实同行评审、版本及原始证据。"
+    },
+    {
+      "name": "Qiskit Documentation",
+      "organization": "IBM Quantum",
+      "kind": "技术文档",
+      "level": "E2",
+      "url": "https://quantum.cloud.ibm.com/docs",
+      "note": "量子线路、SDK、执行与后端能力；须锁定文档和软件版本。"
+    },
+    {
+      "name": "Quantum Technology",
+      "organization": "IBM Quantum",
+      "kind": "产品路线",
+      "level": "E3",
+      "url": "https://www.ibm.com/quantum/technology",
+      "note": "设备和发展路线入口；预计目标不能作为已完成事实。"
+    },
+    {
+      "name": "Quantum AI Research",
+      "organization": "Google Research",
+      "kind": "研究入口",
+      "level": "E3",
+      "url": "https://www.research.google/teams/quantum-ai/",
+      "note": "研究博客用于发现论文，关键结论仍需追溯原始论文与实验。"
+    },
+    {
+      "name": "Quantinuum Systems",
+      "organization": "Quantinuum",
+      "kind": "设备文档",
+      "level": "E2",
+      "url": "https://docs.quantinuum.com/systems/",
+      "note": "设备系统和接口；注意平台、门集与运行条件。"
+    },
+    {
+      "name": "Qiskit Repository",
+      "organization": "GitHub / Qiskit",
+      "kind": "开源代码",
+      "level": "E1/E2",
+      "url": "https://github.com/Qiskit/qiskit",
+      "note": "用于固定软件版本、验证编译和实验代码。"
+    }
+  ],
+  "roadmap": [
+    {
+      "no": "00",
+      "title": "研究框架",
+      "status": "进行中",
+      "description": "搭建研究文档、指标方法、信息架构与页面原型。",
+      "tasks": [
+        {
+          "text": "六大研究主线与问题",
+          "done": true
+        },
+        {
+          "text": "证据与指标规范",
+          "done": true
+        },
+        {
+          "text": "Pages 交互原型",
+          "done": true
+        },
+        {
+          "text": "启用 GitHub Pages 发布",
+          "done": false
+        },
+        {
+          "text": "首批原始论文证据记录",
+          "done": false
+        }
+      ]
+    },
+    {
+      "no": "01",
+      "title": "可追溯数据",
+      "status": "规划",
+      "description": "建立源材料、研究结论和实际观测的可校验数据链。",
+      "tasks": [
+        {
+          "text": "实体 / 来源 / 观测 schema",
+          "done": false
+        },
+        {
+          "text": "首个公开基准采集链",
+          "done": false
+        },
+        {
+          "text": "跨设备同协议比较",
+          "done": false
+        }
+      ]
+    },
+    {
+      "no": "02",
+      "title": "纠错与复现",
+      "status": "规划",
+      "description": "用真实实验与明确的经典基线验证科学结论。",
+      "tasks": [
+        {
+          "text": "逻辑错误率专题数据",
+          "done": false
+        },
+        {
+          "text": "可复现模拟实验",
+          "done": false
+        },
+        {
+          "text": "时序指标与对照图表",
+          "done": false
+        }
+      ]
+    },
+    {
+      "no": "03",
+      "title": "产业与持续研究",
+      "status": "规划",
+      "description": "形成企业档案、技术节点、商业信号与更新机制。",
+      "tasks": [
+        {
+          "text": "产业生态图谱",
+          "done": false
+        },
+        {
+          "text": "技术与商业双轨证据",
+          "done": false
+        },
+        {
+          "text": "周期更新与审核流程",
+          "done": false
+        }
+      ]
+    }
+  ],
+  "metric_groups": [
+    "规模与连接",
+    "器件质量",
+    "纠错与逻辑",
+    "运行与经济性"
+  ]
+}
