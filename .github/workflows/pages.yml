@@ -57,3 +57,25 @@ jobs:
       - name: Deploy Pages
         id: deployment
         uses: actions/deploy-pages@v5
+
+  smoke:
+    name: Verify published website
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check public homepage and research data
+        run: |
+          set -euo pipefail
+          base="https://bestnathan.github.io/nquantum"
+          curl --fail --silent --show-error --location --retry 12 --retry-all-errors --retry-delay 5 --max-time 15 "$base/" -o /tmp/nquantum-index.html
+          grep -Fq 'id="app-content"' /tmp/nquantum-index.html
+          curl --fail --silent --show-error --location --retry 12 --retry-all-errors --retry-delay 5 --max-time 15 "$base/data/research.json" -o /tmp/nquantum-research.json
+          python - <<'PY'
+          import json
+          with open('/tmp/nquantum-research.json', encoding='utf-8') as file:
+              data = json.load(file)
+          assert len(data["tracks"]) == 6, "Expected six research tracks"
+          assert len(data["hardware"]) == 5, "Expected five hardware routes"
+          assert len(data["metrics"]) == 12, "Expected twelve metric definitions"
+          print("Homepage and research JSON are publicly accessible")
+          PY
